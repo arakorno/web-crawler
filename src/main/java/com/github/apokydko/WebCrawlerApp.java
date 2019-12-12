@@ -28,7 +28,6 @@ public class WebCrawlerApp {
         List<String> links = htmlParser.fetchLinksFromPage(googlePageResult);
         List<String> linkResponses = httpClientService.sendManyRequests(links);
         List<String> parsedResponses = htmlParser.parse(linkResponses);
-        System.out.println(parsedResponses);
         Map<PredefinedJsFramework, Integer> topFrameworks = JsFrameworkStatistic.calculate(parsedResponses);
         httpClientService.getExecutor().shutdown();
         System.out.println("List of most used js frameworks:");
